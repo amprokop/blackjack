@@ -1,10 +1,23 @@
 .card {
-  float: left;
+  float:left;
   border: solid 1px black;
   width: 100px;
   border-radius: 5px;
   height: 140px;
   margin-right: 20px;
+  margin-left: 100px;
+  background-color: white;
+  font-family: 'Avenir', sans-serif;
+  font-size: 20px
+}
+
+body {
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+}
+
+h2{
+  font-family: 'Avenir', sans-serif;
 }
 
 .covered {
@@ -13,4 +26,61 @@
 
 .hand {
   overflow: auto;
+}
+h1{
+  font-family: 'Monsieur La Doulaise', cursive;
+  text-align: center;
+  font-size: 4em;
+  color: white;
+  text-shadow: 4px 4px 4px black;
+}
+.player-hand-container {
+  position: relative;
+  width:50%;
+  margin:0 auto;
+}
+.dealer-hand-container {
+  position: relative;
+  width:50%;
+  margin:0 auto;
+}
+
+.table{
+  position: absolute;
+  top: 186px; 
+  width:100%;
+}
+
+.header{
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+button {
+  height: 70px;
+  border-radius: 10px;
+  font-family: 'Monsieur La Doulaise', cursive;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 5px 5px 5px green;
+  color: white;
+  background-color: black;
+  box-shadow: 2px 2px 2px 2px gray;
+  position: relative;
+  margin: 0 auto;
+  width: 50%;
+  margin-left: 25%;
+
+}
+
+#back {
+  background-size: 100% auto; /* width and height, can be %, px or whatever. */
+}
+
+p#winner {
+  display: none;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+
 }
