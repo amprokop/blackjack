@@ -1,9 +1,9 @@
 .card {
   float:left;
-  border: solid 1px black;
-  width: 100px;
+  border: 1px solid black;
+  width: 120px;
   border-radius: 5px;
-  height: 140px;
+  height: 176px;
   margin-right: 20px;
   margin-left: 100px;
   background-color: white;
@@ -21,7 +21,13 @@ h2{
 }
 
 .covered {
+  position: relative;
+  z-index: 1;
   background-color: black;
+  background-image: url('cards/back.jpg');
+}
+.covered img {
+  display: none;
 }
 
 .hand {

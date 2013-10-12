@@ -20,8 +20,24 @@
     };
 
     Hand.prototype.hit = function() {
-      return this.add(this.deck.pop()).last();
+      var scores;
+      if (!this.isDealer) {
+        this.add(this.deck.pop()).last();
+      }
+      scores = this.scores();
+      if (this.isDealer) {
+        console.log(this.at(0));
+        this.at(0).flip();
+        scores = this.scores();
+        while (scores[0] < 17) {
+          this.add(this.deck.pop()).last();
+          scores = this.scores();
+        }
+        return this.trigger('ended');
+      }
     };
+
+    Hand.prototype.stand = function() {};
 
     Hand.prototype.scores = function() {
       var hasAce, score;
@@ -36,6 +52,24 @@
       } else {
         return [score];
       }
+    };
+
+    Hand.prototype.bestScore = function() {
+      var best, score, scores, _i, _len;
+      scores = this.scores();
+      best = 0;
+      for (_i = 0, _len = scores.length; _i < _len; _i++) {
+        score = scores[_i];
+        if ((best < score && score <= 21)) {
+          best = score;
+        }
+      }
+      if (best === 0) {
+        best = "BUST";
+        debugger;
+        this.trigger('ended');
+      }
+      return best;
     };
 
     return Hand;

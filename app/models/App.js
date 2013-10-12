@@ -13,13 +13,37 @@
     }
 
     App.prototype.initialize = function() {
-      var app, deck;
+      var deck,
+        _this = this;
       this.set('deck', deck = new Deck());
       this.set('playerHand', deck.dealPlayer());
       this.set('dealerHand', deck.dealDealer());
-      debugger;
-      app = new window.App();
-      debugger;
+      return this.get('dealerHand playerHand').on('ended', function() {
+        var currentDealerScore, currentPlayerScore, dealerScores, playerScores, score, text, _i, _j, _len, _len1;
+        dealerScores = _this.get('dealerHand').scores();
+        playerScores = _this.get('playerHand').scores();
+        currentPlayerScore = 0;
+        currentDealerScore = 0;
+        for (_i = 0, _len = playerScores.length; _i < _len; _i++) {
+          score = playerScores[_i];
+          if ((currentPlayerScore < score && score <= 21)) {
+            currentPlayerScore = score;
+          }
+        }
+        for (_j = 0, _len1 = dealerScores.length; _j < _len1; _j++) {
+          score = dealerScores[_j];
+          if ((currentDealerScore < score && score <= 21)) {
+            currentDealerScore = score;
+          }
+        }
+        if (currentPlayerScore > currentDealerScore) {
+          text = "WINNER";
+        } else {
+          text = "LOSER";
+        }
+        _this.text = text;
+        return _this.trigger('ended');
+      });
     };
 
     return App;

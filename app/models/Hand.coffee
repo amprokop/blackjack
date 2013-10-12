@@ -7,10 +7,10 @@ class window.Hand extends Backbone.Collection
   hit: ->
     @add(@deck.pop()).last() unless @isDealer
     scores = @scores()
-    isBusted = _.all scores, (score) -> score > 21
-    if isBusted
-      console.log('bust')
-      $('.stand-button').click()
+    # isBusted = _.all scores, (score) -> score > 21
+    # if isBusted
+    #   console.log('bust')
+    #   @trigger('bust')
     if @isDealer
       console.log(@.at(0))
       @.at(0).flip()
@@ -42,7 +42,9 @@ class window.Hand extends Backbone.Collection
     best = 0
     for score in scores when best < score <= 21
         best = score
-    if best is 0 then best = "BUST"
+    if best is 0
+      best = "BUST"
+      @trigger 'ended'
     best
 
 
